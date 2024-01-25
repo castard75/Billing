@@ -107,9 +107,10 @@ $resultCustomers = $CustomerQB->getQuery()->getResult();
                     $entityManager->flush();
                     $data = $serializer->serialize($controle, 'json');
 
-                    $history = (new History())
-                    ->setTitle("assocation")
-                    ->setDescription("nouvelle association"." " .$dto->getTelephone());
+                    //Gestion de l'historique
+                    $history = (new History())  
+                    ->setTitle("Assocation")
+                    ->setDescription("Le numéro"." " .$dto->getTelephone() . "a été asscocié au contrat". " " . $dto->getContrat() );
                     $entityManager->persist($history);
                     $entityManager->flush();
 
